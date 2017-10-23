@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mybcrm.iml" filepath="$PROJECT_DIR$/mybcrm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybcrm-eureka/mybcrm-eureka.iml" filepath="$PROJECT_DIR$/mybcrm-eureka/mybcrm-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybcrm-service/mybcrm-service.iml" filepath="$PROJECT_DIR$/mybcrm-service/mybcrm-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybcrm-web/mybcrm-web.iml" filepath="$PROJECT_DIR$/mybcrm-web/mybcrm-web.iml" />
+    </modules>
+  </component>
+</project>
