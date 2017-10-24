@@ -1,4 +1,4 @@
-package com.ch.mybcrm.service.web;
+package com.ch.mybcrm.service.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2017/10/23
  */
 @RestController
-public class HelloServiceWeb {
+public class HelloServiceController {
 
 
     @RequestMapping("/hello")

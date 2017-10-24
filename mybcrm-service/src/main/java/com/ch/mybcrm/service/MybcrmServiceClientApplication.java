@@ -2,6 +2,7 @@ package com.ch.mybcrm.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
@@ -15,7 +16,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 // Eureka Server 标识
 @EnableEurekaClient
 // Spring Boot 应用标识
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class MybcrmServiceClientApplication {
 
     public static void main(String[] args) {
