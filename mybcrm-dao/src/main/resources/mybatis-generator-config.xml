@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <properties resource="jdbc-mysql.properties"/>
+
+    <!-- Class Driver Path -->
+    <!--<classPathEntry location="${generator.classPath}"/>-->
+
+
+    <context id="context" targetRuntime="MyBatis3">
+
+        <property name="autoDelimitKeywords" value="true" />
+        <property name="beginningDelimiter" value="`" />
+        <property name="endingDelimiter" value="`" />
+        <property name="javaFileEncoding" value="utf-8"/>
+        <property name="suppressTypeWarnings" value="true" />
+        <property name="mergeable" value="false"></property>
+        <!-- 为自动生成的实体类生成toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!--<plugin type="com.triman.mybatis.generator.plugin.MySQLPaginationPlugin"/>-->
+        <plugin type="com.ch.mybcrm.dao.plugins.OverIsMergeablePlugin" />
+
+        <!--<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">-->
+        <!--<property name="searchString" value="Example$" />-->
+        <!--<property name="replaceString" value="Criteria" />-->
+        <!--</plugin>-->
+
+        <commentGenerator>
+            <!-- This property is used to specify whether MBG will include any coments in the generated code -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- This property is used to specify whether MBG will include the generation timestamp in the generated comments -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="${generator.jdbc.url}" userId="${generator.jdbc.username}" password="${generator.jdbc.password}"/>
+
+        <javaTypeResolver>
+            <!-- This property is used to specify whether MyBatis Generator should force the use of java.math.BigDecimal
+      for DECIMAL and NUMERIC fields, rather than substituting integral types when possible -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="${generator.domainPackage}" targetProject="src/main/java">
+            <!-- This property is used to select whether MyBatis Generator will generate different Java packages for
+      the objects based on the catalog and schema of the introspected table -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- This property is used to select whether MyBatis Generator adds code to trim the white space from character fields returned from the database -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${generator.mapperPackage}" targetProject="src/main/resources">
+            <!-- This property is used to select whether MyBatis Generator will generate different Java packages for
+      the objects based on th   e catalog and schema of the introspected table -->
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="${generator.daoPackage}" targetProject="src/main/java" type="XMLMAPPER">
+            <!-- This property is used to select whether MyBatis Generator will generate different Java packages for
+      the objects based on the catalog and schema of the introspected table -->
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--table-->
+
+        <!--********************************************************************************-->
+
+
+        <table tableName="user" domainObjectName="InUser" alias="u" enableDeleteByExample="false" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="account" domainObjectName="InAccount" alias="a" enableDeleteByExample="false" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

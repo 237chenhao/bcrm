@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ch.mybcrm.dao.mapper.InUserMapper" >
+  <resultMap id="BaseResultMap" type="com.ch.mybcrm.dao.model.InUser" >
+    <id column="u_id" property="id" jdbcType="INTEGER" />
+    <result column="u_name" property="name" jdbcType="VARCHAR" />
+    <result column="u_sex" property="sex" jdbcType="INTEGER" />
+    <result column="u_qq" property="qq" jdbcType="VARCHAR" />
+    <result column="u_phone" property="phone" jdbcType="VARCHAR" />
+    <result column="u_birth_date" property="birthDate" jdbcType="TIMESTAMP" />
+    <result column="u_enable" property="enable" jdbcType="INTEGER" />
+    <result column="u_create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="u_update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="u_last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    u.id as u_id, u.`name` as `u_name`, u.sex as u_sex, u.qq as u_qq, u.phone as u_phone, 
+    u.birth_date as u_birth_date, u.`enable` as `u_enable`, u.create_time as u_create_time, 
+    u.update_time as u_update_time, u.last_login_time as u_last_login_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ch.mybcrm.dao.model.InUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user u
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user u
+    where u.id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ch.mybcrm.dao.model.InUser" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user (`name`, sex, qq, 
+      phone, birth_date, `enable`, 
+      create_time, update_time, last_login_time
+      )
+    values (#{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{qq,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{birthDate,jdbcType=TIMESTAMP}, #{enable,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ch.mybcrm.dao.model.InUser" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        `name`,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="birthDate != null" >
+        birth_date,
+      </if>
+      <if test="enable != null" >
+        `enable`,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enable != null" >
+        #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ch.mybcrm.dao.model.InUserExample" resultType="java.lang.Integer" >
+    select count(*) from user u
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user u
+    <set >
+      <if test="record.id != null" >
+        u.id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        u.`name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        u.sex = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.qq != null" >
+        u.qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        u.phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthDate != null" >
+        u.birth_date = #{record.birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.enable != null" >
+        u.`enable` = #{record.enable,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        u.create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        u.update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastLoginTime != null" >
+        u.last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user u
+    set u.id = #{record.id,jdbcType=INTEGER},
+      u.`name` = #{record.name,jdbcType=VARCHAR},
+      u.sex = #{record.sex,jdbcType=INTEGER},
+      u.qq = #{record.qq,jdbcType=VARCHAR},
+      u.phone = #{record.phone,jdbcType=VARCHAR},
+      u.birth_date = #{record.birthDate,jdbcType=TIMESTAMP},
+      u.`enable` = #{record.enable,jdbcType=INTEGER},
+      u.create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      u.update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      u.last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ch.mybcrm.dao.model.InUser" >
+    update user
+    <set >
+      <if test="name != null" >
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        birth_date = #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enable != null" >
+        `enable` = #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ch.mybcrm.dao.model.InUser" >
+    update user
+    set `name` = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      qq = #{qq,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      birth_date = #{birthDate,jdbcType=TIMESTAMP},
+      `enable` = #{enable,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

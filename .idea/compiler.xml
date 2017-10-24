@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="mybcrm-dao" />
         <module name="mybcrm-eureka" />
         <module name="mybcrm-service" />
         <module name="mybcrm-web" />
@@ -13,6 +14,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mybcrm" target="1.8" />
+      <module name="mybcrm-dao" target="1.8" />
       <module name="mybcrm-eureka" target="1.8" />
       <module name="mybcrm-service" target="1.8" />
       <module name="mybcrm-web" target="1.8" />
