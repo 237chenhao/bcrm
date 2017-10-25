@@ -1,4 +1,4 @@
-package com.ch.mybcrm.dao.mapper;
+package com.ch.mybcrm.dao.mappers;
 
 import com.ch.mybcrm.dao.model.InAccount;
 import com.ch.mybcrm.dao.model.InAccountExample;

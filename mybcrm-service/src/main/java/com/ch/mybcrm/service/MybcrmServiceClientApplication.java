@@ -1,5 +1,6 @@
 package com.ch.mybcrm.service;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -16,7 +17,9 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 // Eureka Server 标识
 @EnableEurekaClient
 // Spring Boot 应用标识
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication()
+//扫描Mapper接口
+@MapperScan(value = {"com.ch.mybcrm.dao.mappers"})
 public class MybcrmServiceClientApplication {
 
     public static void main(String[] args) {

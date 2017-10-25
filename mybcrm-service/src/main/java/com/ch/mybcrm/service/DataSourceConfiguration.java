@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Primary;
  * @author chenhao
  * @date 2017/10/24
  */
-@ConfigurationProperties(prefix = "spring.datasource")
+//@ConfigurationProperties(prefix = "spring.datasource")
 public class DataSourceConfiguration {
 
     private String url;

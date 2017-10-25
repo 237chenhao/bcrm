@@ -17,11 +17,7 @@
             <artifactId>mybcrm-dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--支持使用 JDBC 访问数据库 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
+
     </dependencies>
 
 </project>

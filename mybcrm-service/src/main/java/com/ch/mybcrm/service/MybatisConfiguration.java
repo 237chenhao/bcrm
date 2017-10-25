@@ -20,9 +20,9 @@ import javax.sql.DataSource;
 /**
  * Created by chenhao on 2017/10/24.
  */
-@ConfigurationProperties(prefix = "mybatis")
-@EnableTransactionManagement
-@EnableConfigurationProperties(value = {DataSourceConfiguration.class,MybatisConfiguration.class})
+//@ConfigurationProperties(prefix = "mybatis")
+//@EnableTransactionManagement
+//@EnableConfigurationProperties(value = {DataSourceConfiguration.class,MybatisConfiguration.class})
 public class MybatisConfiguration {
 
     private String mapperLocations;
